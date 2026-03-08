@@ -22,7 +22,7 @@ const userSchema = mongoose.Schema({
         enum:["user","admin"],
         default:"user"
     },
-    favourites:[{
+    favorites:[{
         type:Number     //tmdbId
     }],
     history:[
