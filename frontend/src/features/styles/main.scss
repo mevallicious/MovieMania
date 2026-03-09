@@ -1,0 +1,14 @@
+@use "base/variables";
+@use "base/global";
+
+@use "components/navbar";
+@use "components/hero-banner";
+@use "components/movie-card";
+@use "components/skeletoncard";
+
+@use "pages/home";
+@use "pages/auth";
+@use "pages/search";
+@use "pages/movie-details";
+@use "pages/history";
+@use "pages/favorites"

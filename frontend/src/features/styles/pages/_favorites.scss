@@ -1,0 +1,113 @@
+.favorites-page {
+padding-top: 100px;
+  min-height: 100vh;
+  background-color: #080808; // Deep dark background
+  color: white;
+
+  .favorites-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+
+    .favorites-header {
+      margin-bottom: 40px;
+      border-left: 4px solid #e50914; // Netflix-style accent
+      padding-left: 15px;
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 5px;
+        font-weight: 800;
+      }
+
+      p {
+        color: #b3b3b3;
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+  }
+
+  .favorite-item-wrapper {
+    position: relative;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.03);
+
+      .remove-fav-btn {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .remove-fav-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: rgba(229, 9, 20, 0.9); // Red background
+      color: white;
+      border: none;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0; // Hidden by default
+      transform: translateY(-10px); // Slide down animation
+      transition: all 0.3s ease;
+      z-index: 5;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+
+      &:hover {
+        background: #ff1f1f;
+        box-shadow: 0 0 15px rgba(255, 31, 31, 0.6);
+      }
+    }
+  }
+
+  .empty-favorites {
+    text-align: center;
+    padding: 100px 20px;
+    background: #141414;
+    border-radius: 15px;
+    margin-top: 50px;
+
+    .empty-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      filter: grayscale(1);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #808080;
+    }
+  }
+}
+
+
+@media (max-width: 600px) {
+  .favorites-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+  
+  .favorites-page .favorite-item-wrapper .remove-fav-btn {
+    opacity: 1; 
+    transform: none;
+  }
+}

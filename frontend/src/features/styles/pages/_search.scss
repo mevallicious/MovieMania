@@ -1,0 +1,86 @@
+@use "sass:color";
+@use "../base/variables" as *;
+
+
+.search-bar {
+  padding: 8rem 4rem 2rem; 
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 10; 
+
+  input {
+    width: 100%;
+    max-width: 800px;
+    padding: 1.2rem 2rem;
+    background: $card-bg;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    color: white;
+    font-size: 1.1rem;
+    transition: $transition;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+      box-shadow: 0 0 25px rgba($primary, 0.3);
+      background: color.adjust($card-bg, $lightness: 3%);
+    }
+  }
+}
+
+.search-results {
+  padding: 2rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+  gap: 1.5rem;
+
+
+  .movie-card {
+    display: flex !important; 
+    flex-direction: row !important;
+    height: 140px; 
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: $transition;
+
+    &:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    img {
+      width: 100px; // Slim poster for search
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: auto;
+    }
+
+    .movie-info {
+      position: static; // Remove the "Home Page" absolute positioning
+      opacity: 1;
+      transform: none;
+      background: transparent;
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: #fff;
+      }
+
+      span {
+        color: #f1c40f;
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+// src/features/styles/pages/_history.scss
+@use "../base/variables" as *;
+
+.history-page {
+  min-height: 100vh;
+  background: $bg-dark; //
+  padding-top: 8rem; // Prevent overlap with Navbar
+
+  .history-header {
+    padding: 0 4rem 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 3rem;
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(to right, #fff, #888);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      color: $text-muted;
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+.history-grid {
+  display: grid;
+  padding: 0 4rem 4rem;
+  // Professional responsive grid
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+
+  .movie-card {
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-10px); // Pop effect
+      
+      .movie-info {
+        opacity: 1;
+        background: linear-gradient(transparent, rgba(0,0,0,0.9));
+      }
+    }
+  }
+}
+
+.empty-history {
+  text-align: center;
+  padding: 5rem;
+  color: $text-muted;
+  font-size: 1.2rem;
+}

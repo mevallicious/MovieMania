@@ -31,7 +31,12 @@ async function registerUser(req,res){
         {expiresIn:"1d"}
     )
 
-    res.cookie("token",token)
+    res.cookie("token", token, {
+    httpOnly: true,     // Prevents client-side script access
+    secure: false,      // Set to true only if using https
+    sameSite: "lax",    // Required for cross-origin cookie sharing on localhost
+    maxAge: 24 * 60 * 60 * 1000 // 1 day
+});
 
     res.status(201).json({
         message:"user registered successfully",
@@ -45,8 +50,15 @@ async function registerUser(req,res){
 
 
 async function loginUser(req,res){
+
     const {username,email,password} = req.body
-    
+
+    if(!password || (!email && !username)){
+        return res.status(400).json({
+            message:"email/username and password required"
+        })
+    }
+
     const user = await userModel.findOne({
         $or:[
             {email},
@@ -57,12 +69,6 @@ async function loginUser(req,res){
     if(!user){
         return res.status(401).json({
             message:"invalid credentials"
-        })
-    }
-
-    if(!password || (!email && !username)){
-        return res.status(400).json({
-            message:"email/username and password required"
         })
     }
 
@@ -80,7 +86,12 @@ async function loginUser(req,res){
         {expiresIn:"1d"}
     )
 
-    res.cookie("token",token)
+    res.cookie("token", token, {
+    httpOnly: true,     // Prevents client-side script access
+    secure: false,      // Set to true only if using https
+    sameSite: "lax",    // Required for cross-origin cookie sharing on localhost
+    maxAge: 24 * 60 * 60 * 1000 // 1 day
+});
 
     res.status(200).json({
         message:"user logged in successfully",
@@ -103,7 +114,17 @@ async function getMe(req,res){
     })
 
 }
-async function logoutUser(){}
+
+
+async function logoutUser(req, res) {
+    res.cookie("token", "", {
+        httpOnly: true,
+        expires: new Date(0), // Instantly expires the cookie
+        sameSite: "lax"
+    });
+    
+    return res.status(200).json({ message: "Logged out successfully" });
+}
 
 module.exports = {
     registerUser,loginUser,getMe,logoutUser

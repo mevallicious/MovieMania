@@ -1,0 +1,21 @@
+// src/features/styles/base/_reset.scss
+@use "variables" as v; // Import variables as a namespace 'v'
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: v.$bg-dark; // Use the 'v.' prefix to access the variable
+  color: v.$text-main;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+// ... rest of your reset code
+
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; outline: none; }
+input { outline: none; border: none; }

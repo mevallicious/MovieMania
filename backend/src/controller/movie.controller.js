@@ -112,7 +112,24 @@ async function getMovieTrailers(req,res){
     })
 }
 
+async function getMovieCredits(req, res) {
+    const id = Number(req.params.id);
+    const data = await tmdbService.getMovieCredits(id);
+
+    // Filter to get the top 10 actors with their profile images
+    const cast = data.cast.slice(0, 10).map(actor => ({
+        id: actor.id,
+        name: actor.name,
+        character: actor.character,
+        profile_path: actor.profile_path 
+            ? `https://image.tmdb.org/t/p/w200${actor.profile_path}` 
+            : "https://via.placeholder.com/200x200?text=No+Image"
+    }));
+
+    res.status(200).json({ cast });
+}
+
 
 module.exports ={
-    getTrendingMovies,getPopularMovies,getTopRatedMovies,getMovieTrailers,searchMovies,getMovieDetails
+    getTrendingMovies,getPopularMovies,getTopRatedMovies,getMovieTrailers,searchMovies,getMovieDetails,getMovieCredits
 }

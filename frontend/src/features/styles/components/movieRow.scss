@@ -1,0 +1,19 @@
+.movie-row {
+
+  margin: 40px 0;
+
+  h2 {
+    margin-bottom: 15px;
+  }
+
+  .movie-row-container {
+
+    display: flex;
+    gap: 20px;
+
+    overflow-x: auto;
+    padding-bottom: 10px;
+
+  }
+
+}

@@ -11,5 +11,6 @@ movieRouter.get("/search", movieController.searchMovies)
 
 movieRouter.get("/:id", movieController.getMovieDetails)
 movieRouter.get("/:id/trailer", movieController.getMovieTrailers)
+movieRouter.get("/:id/credits", movieController.getMovieCredits);
 
 module.exports =movieRouter

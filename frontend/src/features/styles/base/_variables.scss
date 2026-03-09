@@ -1,0 +1,14 @@
+@use "sass:color";
+
+$primary: #9d4edd; 
+$primary-light: color.adjust($primary, $lightness: 15%); 
+$primary-hover: color.adjust($primary, $lightness: -10%);
+
+$bg-dark: #050505;
+$card-bg: #141414;
+$text-main: #ffffff;
+$text-muted: rgba(255, 255, 255, 0.6);
+$danger: #ff4d4d;
+$glass-bg: rgba(255, 255, 255, 0.05);
+$border-radius: 12px;
+$transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

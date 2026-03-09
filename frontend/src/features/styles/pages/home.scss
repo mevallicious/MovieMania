@@ -1,0 +1,11 @@
+.movie-row {
+  padding: 2rem 4rem;
+
+  h2 { margin-bottom: 1.5rem; font-size: 1.5rem; }
+
+  .movie-row-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+}

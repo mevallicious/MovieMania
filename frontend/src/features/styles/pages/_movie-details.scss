@@ -1,0 +1,79 @@
+@use "../base/variables" as *;
+
+.details-hero {
+  height: 85vh;
+  background-size: cover;
+  background-position: top center;
+  position: relative;
+
+  .hero-overlay {
+    height: 100%;
+    background: linear-gradient(to top, $bg-dark 5%, transparent 40%),
+                linear-gradient(to right, $bg-dark 40%, rgba($bg-dark, 0.4) 100%);
+    display: flex;
+    align-items: center;
+    padding: 0 4rem;
+  }
+
+  .hero-content-wrapper {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    z-index: 5;
+
+    .side-poster {
+      width: 240px;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.8);
+    }
+
+    .main-info {
+      h1 { font-size: 4.5rem; font-weight: 900; margin: 0.5rem 0; }
+      .meta-tag { color: $text-muted; text-transform: uppercase; letter-spacing: 2px; }
+      
+      .crew-mini {
+        display: flex; gap: 3rem; margin: 2rem 0;
+        p { color: $text-muted; font-size: 0.8rem; text-transform: uppercase; }
+      }
+    }
+  }
+}
+
+.action-buttons {
+  display: flex; gap: 1rem;
+  button {
+    padding: 1rem 2rem; border-radius: 50px; font-weight: 700; transition: $transition;
+    &.trailer-btn { background: #ff4500; color: white; } // Match the orange button in screenshot
+    &.collection-btn { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
+    &:hover { transform: scale(1.05); filter: brightness(1.2); }
+  }
+}
+
+.details-body {
+  display: grid; grid-template-columns: 2fr 1fr; padding: 4rem; gap: 4rem;
+  
+  .cast-scroll {
+    display: flex; gap: 2rem; overflow-x: auto; padding: 2rem 0;
+    .actor-card {
+      text-align: center; min-width: 120px;
+      .actor-img {
+        width: 100px; height: 100px; border-radius: 50%; // Circular portraits
+        background-size: cover; margin-bottom: 1rem; border: 2px solid $primary;
+      }
+      .actor-name { font-weight: bold; font-size: 0.9rem; }
+      .character-name { color: $text-muted; font-size: 0.8rem; }
+    }
+  }
+}
+
+// Vibe Chart Styling
+.pie-chart {
+  width: 180px; height: 180px; border-radius: 50%;
+  position: relative; display: flex; align-items: center; justify-content: center;
+  margin: 0 auto;
+  .inner-label {
+    width: 120px; height: 120px; background: #1a1a1a; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    font-weight: 800; span { color: $text-muted; }
+  }
+}

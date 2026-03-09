@@ -31,7 +31,6 @@ async function searchMovies(query){
     const response = await api.get("/search/movie", {
         params: { query }
     })
-
     return response.data
 }
 
@@ -40,6 +39,11 @@ async function getMovieTrailers(id){
     return response.data
 }
 
+async function getMovieCredits(id) {
+    const response = await api.get(`/movie/${id}/credits`);
+    return response.data;
+}
+
 module.exports = {
-    getTrendingMovies,getPopularMovies,getTopRatedMovies,getMovieDetails,searchMovies,getMovieTrailers    
+    getTrendingMovies,getPopularMovies,getTopRatedMovies,getMovieDetails,searchMovies,getMovieTrailers,getMovieCredits   
 }
